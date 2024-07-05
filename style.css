@@ -11,17 +11,22 @@ body {
     font-family: 'Roboto';
     font-size: 16px;
     font-weight: 400;
-    background-color: hsl(231, 7%, 60%);
+    background-color: hsl(235, 18%, 26%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
+.animationSlideUp {
+    animation: slideUp ease 2s forwards;
+}
 .container {
-    width: 920px;
-    height: 645px;
+    max-width: 920px;
     background-color: white;
     border-radius: 20px;
 
-    margin: 215px 260px 220px 260px;
     padding: 25px 25px 25px 63px;
+    /* max-width: 505px; */
+    /* padding: 48px 65px 64px 65px; */
 }
 
 .formLetterStart {
@@ -56,6 +61,12 @@ body {
     font-size: 14px;
     font-weight: 700;
 }
+.formLetterStart__content-inputEmail .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
 #email {
     height: 55px;
     border: 1px solid hsl(231, 7%, 60%);
@@ -63,6 +74,7 @@ body {
     margin-top: 10px;
     margin-bottom: 25px;
     padding-left: 25px;
+    cursor: pointer;
 }
 .formLetterStart__content-submit {
     width: 367px;
@@ -74,7 +86,63 @@ body {
     font-weight: 700;
     padding-top: 23px;
     padding-bottom: 16px;
+    cursor: pointer;
+    &:hover {
+        background-image: linear-gradient(to right, #ff5478, #ff693e);
+        box-shadow: 0 15px 45px -8px hsl(4, 100%, 67%);
+    }
 }
 .formLetterEnd {
     display: none;
+    flex-direction: column;
+    max-width: 505px;
+}
+.formLetterEnd-title {
+    font-size: 55px;
+    line-height: 50px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.formLetterEnd-title::before {
+    content: url('./assets/images/icon-success.svg');
+    margin-bottom: 30px;
+}
+.formLetterEnd-content {
+    font-size: 16px;
+    margin-bottom: 45px;
+}
+.formLetterEnd-submit {
+    width: 100%;
+    height: 55px;
+    font-weight: 700;
+    color: white;
+    background-color: hsl(234, 29%, 20%);
+    border: none;
+    cursor: pointer;
+    padding: 20px 0 20px 0;
+    &:hover {
+        background-image: linear-gradient(to right, #ff5478, #ff693e);
+        box-shadow: 0 15px 45px -8px hsl(4, 100%, 67%);
+    }
+}
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(0, -180%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+/* inValid */
+.inValid .validMessage {
+    color: red;
+}
+.inValid #email {
+    border: 1px solid red;
+    color: red;
+    background-color: rgb(247, 225, 225);
 }

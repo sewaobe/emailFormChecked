@@ -19,66 +19,95 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <div class="container">
+        <div class="container animationSlideUp">
             <!-- Sign-up form start -->
 
-            <div class="formLetterStart">
-                <div class="formLetterStart__content">
-                    <h1 class="formLetterStart__content-title">
-                        Stay updated!
-                    </h1>
+            <form action="" method="POST" id="form">
+                <div class="formLetterStart">
+                    <div class="formLetterStart__content">
+                        <h1 class="formLetterStart__content-title">
+                            Stay updated!
+                        </h1>
 
-                    <p class="formLetterStart__content-des">
-                        Join 60,000+ product managers receiving monthly updates
-                        on:
-                    </p>
-                    <p class="formLetterStart__content-benefit">
-                        Product discovery and building what matters
-                    </p>
-                    <p class="formLetterStart__content-benefit">
-                        Measuring to ensure updates are a success
-                    </p>
-                    <p class="formLetterStart__content-benefit">
-                        And much more!
-                    </p>
+                        <p class="formLetterStart__content-des">
+                            Join 60,000+ product managers receiving monthly
+                            updates on:
+                        </p>
+                        <p class="formLetterStart__content-benefit">
+                            Product discovery and building what matters
+                        </p>
+                        <p class="formLetterStart__content-benefit">
+                            Measuring to ensure updates are a success
+                        </p>
+                        <p class="formLetterStart__content-benefit">
+                            And much more!
+                        </p>
 
-                    <div class="formLetterStart__content-inputEmail">
-                        <label for="email"> Email address</label>
-                        <input
-                            id="email"
-                            name="email"
-                            type="text"
-                            placeholder="email@company.com"
+                        <div class="formLetterStart__content-inputEmail">
+                            <div class="title">
+                                <label for="email"> Email address</label>
+                                <p class="validMessage"></p>
+                            </div>
+                            <input
+                                id="email"
+                                name="emailInput"
+                                type="text"
+                                placeholder="email@company.com"
+                                rules="required:{Valid email required}|email"
+                                spellcheck="false"
+                            />
+                        </div>
+
+                        <button class="formLetterStart__content-submit">
+                            Subscribe to monthly newsletter
+                        </button>
+                    </div>
+                    <div class="formLetterStart__image">
+                        <img
+                            src="./assets/images/illustration-sign-up-desktop.svg"
+                            alt="No image"
                         />
                     </div>
-
-                    <button class="formLetterStart__content-submit">
-                        Subscribe to monthly newsletter
-                    </button>
                 </div>
-                <div class="formLetterStart__image">
-                    <img
-                        src="./assets/images/illustration-sign-up-desktop.svg"
-                        alt="No image"
-                    />
-                </div>
-            </div>
+            </form>
 
             <!-- Sign-up form end -->
 
             <!-- Success message start -->
 
             <div class="formLetterEnd">
-                <h1>Thanks for subscribing!</h1>
+                <h1 class="formLetterEnd-title">Thanks for subscribing!</h1>
 
-                <p>
-                    A confirmation email has been sent to ash@loremcompany.com.
+                <p class="formLetterEnd-content">
+                    A confirmation email has been sent to
+                    <strong>ash@loremcompany.com.</strong>
                     Please open it and click the button inside to confirm your
                     subscription.
                 </p>
-                <button>Dismiss message</button>
+                <button class="formLetterEnd-submit">Dismiss message</button>
             </div>
             <!-- Success message end -->
         </div>
+        <script src="http://localhost:8086/validator.js"></script>
+        <script>
+            const formSignup = new Validator('#form', {
+                errorElement: '.validMessage',
+            });
+            formSignup.onSubmit = data => {
+                console.log(data);
+                const container = document.querySelector('.container');
+                const formLetterStart =
+                    document.querySelector('.formLetterStart');
+                const formLetterEnd = document.querySelector('.formLetterEnd');
+
+                formLetterStart.style.display = 'none';
+                formLetterEnd.style.display = 'block';
+                container.style.maxWidth = '505px';
+                container.style.padding = '48px 65px 64px 65px';
+                container.classList.remove('animationSlideUp');
+                container.offsetWidth;
+                container.classList.add('animationSlideUp');
+            };
+        </script>
     </body>
 </html>
